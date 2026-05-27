@@ -1,4 +1,4 @@
-﻿namespace Import_Export_Company.DTOs
+﻿namespace Import_Export_Company.DTOs.Response
 {
     public class WareHouseDTO
     {

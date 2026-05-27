@@ -9,7 +9,7 @@ namespace Import_Export_Company.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public int Sales_order_id { get; set; }
+        public int Sales_Order_id { get; set; }
         [Required]
         public int Product_id { get; set; }
         [Required]
@@ -17,7 +17,7 @@ namespace Import_Export_Company.Models
         [Required]
         public decimal Unit_price { get; set; }
 
-        [ForeignKey("Sales_order_id")]
+        [ForeignKey("Sales_Order_id")]
         public Sales_Orders Sales_order { get; set; }
         [ForeignKey("Product_id")]
         public Products Product { get; set; }

@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Import_Export_Company.DTOs
+namespace Import_Export_Company.DTOs.Request
 {
-    public class SupplierDTO
+    public class CreateSupplierDTO
     {
-        public int Id { get; set; }
         public string Company_name { get; set; }
         public string Country { get; set; }
         public string Contact_name { get; set; }

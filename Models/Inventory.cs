@@ -9,7 +9,7 @@ namespace Import_Export_Company.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public int WareHouse_id { get; set; }
+        public int Warehouse_id { get; set; }
         [Required]
         public int Product_id { get; set; }
         [Required]
@@ -17,7 +17,7 @@ namespace Import_Export_Company.Models
         [Required]
         public int Reserved_quantity { get; set; }
 
-        [ForeignKey("WareHouse_id")]
+        [ForeignKey("Warehouse_id")]
         public WareHouses WareHouse { get; set; }
         [ForeignKey("Product_id")]
         public Products Product { get; set; }

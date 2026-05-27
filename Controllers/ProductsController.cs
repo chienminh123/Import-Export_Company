@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
-using Import_Export_Company.DTOs;
 using Import_Export_Company.Services;
+using Import_Export_Company.DTOs.Request;
 
 namespace Import_Export_Company.Controllers
 {

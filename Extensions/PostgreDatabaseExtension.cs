@@ -24,6 +24,15 @@ namespace Import_Export_Company.Extensions
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<ICustomerService, CustomerService>();
 
+            services.AddScoped<IPurchaseOrderRepository, PurchaseOrderRepository>();
+            services.AddScoped<IPurchaseOrderService, PurchaseOrderService>();
+
+            services.AddScoped<ISalesOrderRepository, SalesOrderRepository>();
+            services.AddScoped<ISalesOrderService, SalesOrderService>();
+
+            services.AddScoped<IPartnerDebtRepository, PartnerDebtRepository>();
+            services.AddScoped<IPartnerDebtService, PartnerDebtService>();
+
             return services;
         }
     }
