@@ -1,6 +1,7 @@
 ﻿using Import_Export_Company.DTOs.Request;
 using Import_Export_Company.DTOs.Response;
 using Import_Export_Company.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,6 +19,7 @@ namespace Import_Export_Company.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin, Warehouse, Accountant")]
         public async Task<IActionResult> GetAll()
         {
             var orders = await _service.GetAllOrdersAsync();
@@ -43,6 +45,7 @@ namespace Import_Export_Company.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([FromBody] CreatePurchaseOrderDTO dto)
         {
             try
@@ -127,6 +130,7 @@ namespace Import_Export_Company.Controllers
         }
 
         [HttpPost("{id}/confirm-import")]
+        [Authorize(Roles = "Admin, Warehouse")]
         public async Task<IActionResult> ConfirmImport(int id, [FromQuery] int warehouseId)
         {
             try

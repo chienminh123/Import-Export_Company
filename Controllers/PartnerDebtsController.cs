@@ -1,5 +1,6 @@
 ﻿using Import_Export_Company.DTOs.Request;
 using Import_Export_Company.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,7 @@ namespace Import_Export_Company.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin, Accountant")]
     public class PartnerDebtsController : ControllerBase
     {
         private readonly IPartnerDebtService _debtService;

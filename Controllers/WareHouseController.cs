@@ -1,5 +1,6 @@
 ﻿using Import_Export_Company.DTOs.Request;
 using Import_Export_Company.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -42,6 +43,7 @@ namespace Import_Export_Company.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin, Warehouse")]
         public async Task<IActionResult> Create([FromBody] CreateWareHouse dto)
         {
             try
@@ -60,6 +62,7 @@ namespace Import_Export_Company.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin, Warehouse")]
         public async Task<IActionResult> Update(int id, [FromBody] CreateWareHouse dto)
         {
             try
@@ -82,6 +85,7 @@ namespace Import_Export_Company.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin, Warehouse")]
         public async Task<IActionResult> Delete(int id)
         {
             try

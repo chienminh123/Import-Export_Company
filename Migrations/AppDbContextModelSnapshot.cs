@@ -49,6 +49,16 @@ namespace Import_Export_Company.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Customer_name = "Đại lý Thế Giới Số",
+                            Delivery_address = "Đống Đa, Hà Nội",
+                            Email = "contact@tgs.vn",
+                            Phone = "0988111222"
+                        });
                 });
 
             modelBuilder.Entity("Import_Export_Company.Models.Financial_Vouchers", b =>
@@ -92,6 +102,20 @@ namespace Import_Export_Company.Migrations
                     b.HasIndex("User_id");
 
                     b.ToTable("Financial_Vouchers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Amount = 20000m,
+                            Payment_date = new DateTime(2026, 5, 26, 9, 49, 33, 62, DateTimeKind.Utc).AddTicks(1134),
+                            Payment_method = "BankTransfer",
+                            Reference_id = 1,
+                            Reference_type = "PurchaseOrder",
+                            Type = "PAYMENT",
+                            User_id = 4,
+                            Voucher_number = "FV-2026-0001"
+                        });
                 });
 
             modelBuilder.Entity("Import_Export_Company.Models.Import_Documents", b =>
@@ -132,6 +156,19 @@ namespace Import_Export_Company.Migrations
                     b.HasIndex("Purchase_Order_id");
 
                     b.ToTable("Import_Documents");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Bill_of_lading = "BOL-0001",
+                            Commercial_invoice = "CI-0001",
+                            Customs_declaration = "CD-0001",
+                            Document_url = "https://docs.example.com/imports/1",
+                            Eta = new DateTime(2026, 6, 1, 9, 49, 33, 62, DateTimeKind.Utc).AddTicks(851),
+                            Etd = new DateTime(2026, 5, 22, 9, 49, 33, 62, DateTimeKind.Utc).AddTicks(848),
+                            Purchase_Order_id = 1
+                        });
                 });
 
             modelBuilder.Entity("Import_Export_Company.Models.Inventory", b =>
@@ -161,6 +198,40 @@ namespace Import_Export_Company.Migrations
                     b.HasIndex("Warehouse_id");
 
                     b.ToTable("Inventory");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Product_id = 2,
+                            Quantity = 50,
+                            Reserved_quantity = 5,
+                            Warehouse_id = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Product_id = 3,
+                            Quantity = 30,
+                            Reserved_quantity = 2,
+                            Warehouse_id = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Product_id = 2,
+                            Quantity = 20,
+                            Reserved_quantity = 0,
+                            Warehouse_id = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Product_id = 3,
+                            Quantity = 15,
+                            Reserved_quantity = 1,
+                            Warehouse_id = 2
+                        });
                 });
 
             modelBuilder.Entity("Import_Export_Company.Models.Inventory_Transactions", b =>
@@ -202,6 +273,41 @@ namespace Import_Export_Company.Migrations
                     b.HasIndex("WareHouse_id");
 
                     b.ToTable("Inventory_Transactions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Created_at = new DateTime(2026, 5, 29, 9, 49, 33, 62, DateTimeKind.Utc).AddTicks(712),
+                            Product_id = 2,
+                            Quantity = 50,
+                            Reference_id = 1,
+                            Transaction_type = "IMPORT",
+                            User_id = 1,
+                            WareHouse_id = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Created_at = new DateTime(2026, 5, 29, 9, 49, 33, 62, DateTimeKind.Utc).AddTicks(715),
+                            Product_id = 3,
+                            Quantity = 30,
+                            Reference_id = 1,
+                            Transaction_type = "IMPORT",
+                            User_id = 1,
+                            WareHouse_id = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Created_at = new DateTime(2026, 5, 29, 9, 49, 33, 62, DateTimeKind.Utc).AddTicks(717),
+                            Product_id = 2,
+                            Quantity = 5,
+                            Reference_id = 1,
+                            Transaction_type = "RESERVE",
+                            User_id = 2,
+                            WareHouse_id = 1
+                        });
                 });
 
             modelBuilder.Entity("Import_Export_Company.Models.Partner_Debts", b =>
@@ -231,6 +337,26 @@ namespace Import_Export_Company.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Partner_Debts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Paid_amount = 0m,
+                            Partner_id = 1,
+                            Partner_type = "Customer",
+                            Remaining_debt = 7000m,
+                            Total_debt = 7000m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Paid_amount = 20000m,
+                            Partner_id = 1,
+                            Partner_type = "Supplier",
+                            Remaining_debt = 30000m,
+                            Total_debt = 50000m
+                        });
                 });
 
             modelBuilder.Entity("Import_Export_Company.Models.Products", b =>
@@ -270,6 +396,30 @@ namespace Import_Export_Company.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 2,
+                            Barcode = "8901234567890",
+                            Description = "Laptop cao cấp từ Dell",
+                            Name = "Laptop Dell XPS 15",
+                            Sku = "LAP-DELL-01",
+                            Unit = "Cái",
+                            Volume = 0.1m,
+                            Weight = 2.5m
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Barcode = "8901234567891",
+                            Description = "Điện thoại thông minh cao cấp từ Apple",
+                            Name = "iPhone 15 Pro Max 256GB",
+                            Sku = "IPHONE-15-PRM",
+                            Unit = "Cái",
+                            Volume = 0.05m,
+                            Weight = 0.2m
+                        });
                 });
 
             modelBuilder.Entity("Import_Export_Company.Models.Purchase_Order_Details", b =>
@@ -299,6 +449,24 @@ namespace Import_Export_Company.Migrations
                     b.HasIndex("Purchase_Order_id");
 
                     b.ToTable("Purchase_Order_Details");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Product_id = 2,
+                            Purchase_Order_id = 1,
+                            Quantity = 10,
+                            Unit_price = 2000m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Product_id = 3,
+                            Purchase_Order_id = 1,
+                            Quantity = 5,
+                            Unit_price = 3000m
+                        });
                 });
 
             modelBuilder.Entity("Import_Export_Company.Models.Purchase_Orders", b =>
@@ -343,6 +511,20 @@ namespace Import_Export_Company.Migrations
                     b.HasIndex("Supplier_id");
 
                     b.ToTable("Purchase_Orders");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Created_by = 1,
+                            Currency = "USD",
+                            Expected_Delivery = new DateTime(2026, 6, 3, 9, 49, 33, 62, DateTimeKind.Utc).AddTicks(757),
+                            Order_Date = new DateTime(2026, 5, 19, 9, 49, 33, 62, DateTimeKind.Utc).AddTicks(750),
+                            Po_Number = "PO-2026-0001",
+                            Status = "SHIPPING",
+                            Supplier_id = 1,
+                            Total_Amount = 50000m
+                        });
                 });
 
             modelBuilder.Entity("Import_Export_Company.Models.Roles", b =>
@@ -364,6 +546,32 @@ namespace Import_Export_Company.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Quản trị viên toàn quyền",
+                            Role_name = "Admin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Nhân viên kinh doanh",
+                            Role_name = "Sales"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Thủ kho",
+                            Role_name = "Warehouse"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "Kế toán",
+                            Role_name = "Accountant"
+                        });
                 });
 
             modelBuilder.Entity("Import_Export_Company.Models.Sales_Order_Details", b =>
@@ -393,6 +601,24 @@ namespace Import_Export_Company.Migrations
                     b.HasIndex("Sales_Order_id");
 
                     b.ToTable("Sales_Order_Details");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Product_id = 2,
+                            Quantity = 2,
+                            Sales_Order_id = 1,
+                            Unit_price = 2000m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Product_id = 3,
+                            Quantity = 1,
+                            Sales_Order_id = 1,
+                            Unit_price = 3000m
+                        });
                 });
 
             modelBuilder.Entity("Import_Export_Company.Models.Sales_Orders", b =>
@@ -439,6 +665,20 @@ namespace Import_Export_Company.Migrations
                     b.HasIndex("Warehouse_id");
 
                     b.ToTable("Sales_Orders");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Created_by = 2,
+                            Currency = "USD",
+                            Customer_id = 1,
+                            Order_Date = new DateTime(2026, 5, 27, 9, 49, 33, 62, DateTimeKind.Utc).AddTicks(881),
+                            So_Number = "SO-2026-0001",
+                            Status = "PENDING",
+                            Total_Amount = 7000m,
+                            Warehouse_id = 1
+                        });
                 });
 
             modelBuilder.Entity("Import_Export_Company.Models.Suppliers", b =>
@@ -476,6 +716,18 @@ namespace Import_Export_Company.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Suppliers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "Texas, USA",
+                            Company_name = "Dell Technologies US",
+                            Contact_name = "NMC",
+                            Country = "USA",
+                            Email = "partner@dell.com",
+                            Phone = "1800123456"
+                        });
                 });
 
             modelBuilder.Entity("Import_Export_Company.Models.UserRole", b =>
@@ -499,6 +751,32 @@ namespace Import_Export_Company.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserRole");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            RoleId = 1,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            RoleId = 2,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            RoleId = 3,
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            RoleId = 4,
+                            UserId = 4
+                        });
                 });
 
             modelBuilder.Entity("Import_Export_Company.Models.Users", b =>
@@ -552,6 +830,56 @@ namespace Import_Export_Company.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Created_at = new DateTime(2026, 5, 29, 9, 49, 32, 649, DateTimeKind.Utc).AddTicks(212),
+                            Department = "Ban Giám Đốc",
+                            Email = "admin@company.com",
+                            FullName = "Nguyễn Minh Chiến",
+                            Password = "$2a$11$ungZzQNMURplBUa73PPESO0WW6TZTP3.02OE2BoeceAoeTQv16SUW",
+                            PhoneNumber = "0900000001",
+                            Status = "Active",
+                            UserName = "admin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Created_at = new DateTime(2026, 5, 29, 9, 49, 32, 787, DateTimeKind.Utc).AddTicks(325),
+                            Department = "Kinh Doanh",
+                            Email = "sales@company.com",
+                            FullName = "N V Sales",
+                            Password = "$2a$11$JGDEdfdVLmoDfl.K0bWQPOX31Ech0DR5UaLWV8Yx3ERQVR03CIXsO",
+                            PhoneNumber = "0900000002",
+                            Status = "Active",
+                            UserName = "sales"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Created_at = new DateTime(2026, 5, 29, 9, 49, 32, 924, DateTimeKind.Utc).AddTicks(6954),
+                            Department = "Kho Bãi",
+                            Email = "kho@company.com",
+                            FullName = "N V Kho",
+                            Password = "$2a$11$/TGH8jmshOqW9YA4idsCa.NwhwbNxl3MKN9s4HYtPYb9wNk1fjqDC",
+                            PhoneNumber = "0900000003",
+                            Status = "Active",
+                            UserName = "kho"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Created_at = new DateTime(2026, 5, 29, 9, 49, 33, 61, DateTimeKind.Utc).AddTicks(9449),
+                            Department = "Kế Toán",
+                            Email = "keToan@company.com",
+                            FullName = "N V Kế Toán",
+                            Password = "$2a$11$8fQF8IvS1PKb21M0UeW8POfYDslymHfny9tjBzTMAL6MUHo9HjgLC",
+                            PhoneNumber = "0900000004",
+                            Status = "Active",
+                            UserName = "keToan"
+                        });
                 });
 
             modelBuilder.Entity("Import_Export_Company.Models.WareHouses", b =>
@@ -577,6 +905,22 @@ namespace Import_Export_Company.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("WareHouses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "Hà Nội",
+                            Name = "Kho Tổng Miền Bắc",
+                            PhoneNumber = "0243111222"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "Hải Phòng",
+                            Name = "Kho Cảng Hải Phòng",
+                            PhoneNumber = "0225111333"
+                        });
                 });
 
             modelBuilder.Entity("Import_Export_Company.Models.Financial_Vouchers", b =>

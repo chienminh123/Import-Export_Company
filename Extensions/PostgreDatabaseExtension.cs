@@ -33,6 +33,11 @@ namespace Import_Export_Company.Extensions
             services.AddScoped<IPartnerDebtRepository, PartnerDebtRepository>();
             services.AddScoped<IPartnerDebtService, PartnerDebtService>();
 
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+
+            services.AddScoped<IAuthService, AuthService>();
+
             return services;
         }
     }

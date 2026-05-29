@@ -1,5 +1,6 @@
 ﻿using Import_Export_Company.DTOs.Request;
 using Import_Export_Company.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +18,7 @@ namespace Import_Export_Company.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin, Accountant")]
         public async Task<IActionResult> GetAllSuppliers()
         {
             var suppliers = await _supplierService.GetAllSuppliersAsync();
@@ -24,6 +26,7 @@ namespace Import_Export_Company.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin, Accountant")]
         public async Task<IActionResult> GetSupplierById(int id)
         {
             try
@@ -43,6 +46,7 @@ namespace Import_Export_Company.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateSupplier([FromBody] CreateSupplierDTO dto)
         {
             try
@@ -61,6 +65,7 @@ namespace Import_Export_Company.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateSupplier(int id, [FromBody] CreateSupplierDTO dto)
         {
             try
@@ -83,6 +88,7 @@ namespace Import_Export_Company.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteSupplier(int id)
         {
             try

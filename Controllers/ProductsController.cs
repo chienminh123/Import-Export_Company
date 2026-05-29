@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Import_Export_Company.DTOs.Request;
+using Import_Export_Company.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
-using Import_Export_Company.Services;
-using Import_Export_Company.DTOs.Request;
 
 namespace Import_Export_Company.Controllers
 {
@@ -18,6 +19,7 @@ namespace Import_Export_Company.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin, Sales, Warehouse, Accountant")]
         public async Task<IActionResult> GetAll()
         {
             var products = await _productService.GetAllProductsAsync();
@@ -43,6 +45,7 @@ namespace Import_Export_Company.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin, Warehouse")]
         public async Task<IActionResult> Create([FromBody] CreateProductDTO dto)
         {
             try
@@ -62,6 +65,7 @@ namespace Import_Export_Company.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin, Warehouse")]
         public async Task<IActionResult> Update(int id, [FromBody] CreateProductDTO dto)
         {
             try
@@ -84,6 +88,7 @@ namespace Import_Export_Company.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin, Warehouse")]
         public async Task<IActionResult> Delete(int id)
         {
             try

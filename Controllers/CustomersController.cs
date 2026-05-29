@@ -1,5 +1,6 @@
 ﻿using Import_Export_Company.DTOs.Request;
 using Import_Export_Company.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +18,7 @@ namespace Import_Export_Company.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin, Sales, Accountant")]
         public async Task<IActionResult> GetAllCustomers()
         {
             var customers = await _customerService.GetAllCustomersAsync();
@@ -24,6 +26,7 @@ namespace Import_Export_Company.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin, Sales, Accountant")]
         public async Task<IActionResult> GetCustomerById(int id)
         {
             try
@@ -43,6 +46,7 @@ namespace Import_Export_Company.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin, Sales")]
         public async Task<IActionResult> CreateCustomer([FromBody] CreateCustomerDTO dto)
         {
             try
@@ -61,6 +65,7 @@ namespace Import_Export_Company.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin, Sales")]
         public async Task<IActionResult> UpdateCustomer(int id, [FromBody] CreateCustomerDTO dto)
         {
             try
@@ -78,6 +83,7 @@ namespace Import_Export_Company.Controllers
             }
         }
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteCustomer(int id)
         {
             try
